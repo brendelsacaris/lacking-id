@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins, Arial;
+}
+
+.level{
+    background-color: rgb(102, 94, 94);
+    color: white;
+   
+    border-radius: 20px;
+    height: 800px;
+    width: 700px;
+    
+    
+    padding: 50px 50px 50px 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;  
+}
+
+.label{
+    font-size: 40px;
+    font-weight: 900;
+    background-color:  ;
+    border-bottom: solid 3px;
+}
+.seven,
+.eight,
+.nine{
+    padding: 10px 25px 10px 25px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight:600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.ten{
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight:600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.eleven{
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight:600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.twelve{
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight:600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,16 @@
+
+.container{
+    font-family: Poppins, Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+.camellia-body{
+    background-color: ;
+    
+}
+.camellia-header{
+ font-weight: 800;
+ font-size: 50px;
+}
+

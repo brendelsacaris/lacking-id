@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRADE 7</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="seven.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="camellia-body">
+            <h1 class="camellia-header">CAMELLIA</h1><br>
+            <!--6. create a input named text
+                7. then put an ID so that if we click the Add student button the typed data inside the textbox will be saved//-->
+            <input id="textbox-id" type="text" placeholder="Type student name here"></input>
+            <!--19. add input for date picker//-->
+            <input id="date-picker" type="date"></input>
+            <!-- 3. put attribute "onclick" to the button so that if we click it it will add new student
+                5. call the function "addStudent"//-->
+            <button onclick="addStudent()">Add student</button>
+
+            <!-- 14. after step 13 the names will just copy and add new name to webpage
+                or repeat, to reset the names add a div so that the button and textbox will ramein//-->
+                <div id="name-list"></div>
+            <script>
+//model section
+                /*21. then rewrite this code to become an object so that we can put an due dat to our name
+                //1. create an array of student
+                let student= ['student a', 'student b', 'student c'];*/
+                //22. this is the new code
+                let student;
+                const savedNames = JSON.parse(localStorage.getItem('student'));
+                if(Array.isArray(savedNames)){
+                    student = savedNames;
+                }else{
+                    student =[{
+                    completename: 'student a',
+                    duedate: '2021-10-20',
+                    id: 'id1'
+                },{
+                    completename: 'student b',
+                    duedate: '2021-10-20',
+                    id: 'id2'
+                },{
+                    completename: 'student c',
+                    duedate: '2021-10-20',
+                    id: 'id3'
+                }];
+                }      
+//creates 
+                function createName(name, dueDate){
+                    //26. create a variable for delete id
+                    const id = ' '+ new Date().getTime();
+
+                    //23. then instead of this code 
+                    /*//10. then put the variable inside the parameter of the push to add new name
+                    student.push(name);*/
+                    //24. this is new one
+                    student.push({
+                        completename: name,
+                        duedate: dueDate,
+                        id: id
+                    });
+
+                    saveNames();
+                }
+
+                //14. as well as here call the function reflect
+                reflect();
+              
+                //12. then instead of displaying code below, we will just call the function reflect
+               
+                /* //2. use loops forEach to display names in the webpage
+                student.forEach(function (studentName){
+                    let element = document.createElement('div');
+                    element.innerText = studentName;
+                    document.body.appendChild(element);
+                }); */
+                //4. add a function for adding new student
+//delete
+                function removeName(idToDelete){
+                    student = student.filter( function(ngalan){
+                        if (ngalan.id === idToDelete){
+                            return false;
+                        }else{
+                            return true;
+                        }
+                    });
+                    saveNames();
+                }
+                function saveNames(){
+                    localStorage.setItem('student', JSON.stringify(student));
+                }
+//controller             
+                function addStudent(){
+                    //8. create a variable to store the textbox
+                    let textbox = document.getElementById('textbox-id');
+                    //9. create new variable to store the textbox value
+                    let name= textbox.value;
+
+                    //20. add variable to get the input date picker
+                    const datePicker = document.getElementById('date-picker');
+                    const dueDate = datePicker.value;
+
+                    createName(name, dueDate);
+                   
+                    //13. call the function reflect here
+                    reflect();
+                }
+                //25. create a delete function
+                function deleteName(event){
+                    const deleteButton = event.target;
+                    const idToDelete = deleteButton.id;
+
+                    removeName(idToDelete);
+                    reflect();
+                }
+//view
+                //11. add new function to display added name to webpage
+                function reflect(){
+
+                //18. to reset the list type the code below
+                        document.getElementById('name-list').innerHTML = ' ';
+
+                        student.forEach(function (student){
+                        let element = document.createElement('div');
+                        element.innerText = student.completename +' '+ student.duedate;
+
+                        //24. cereate a delete button
+                        const deleteButton = document.createElement('button');
+                        deleteButton.innerText ='Delete';
+                        deleteButton.style ='margin-left: 12px';
+                        deleteButton.onclick = deleteName;
+                        deleteButton.id = student.id;
+                        element.appendChild(deleteButton);
+
+                        //15. create a variable here to call the id of the div.
+                        let namelist= document.getElementById('name-list');
+                        //16. the insted of the code below
+                        /*document.body.appendChild(element);*/
+                        //17. write this
+                        namelist.appendChild(element);
+                        });
+                }
+            </script> 
+        </div>
+    </div>  
+</body>
+</html>
+    
+    
